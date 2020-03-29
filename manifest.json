@@ -1,0 +1,44 @@
+{
+	"manifest_version": 2,
+	"name": "ScrollBar",
+    "version": "1.0.0",
+    "description": "自动执行页面滚动的Chrome扩展",
+    "icons":
+	{
+		"16": "img/icon.png",
+		"48": "img/icon.png",
+		"128": "img/icon.png"
+    },
+    "background":
+	{
+		"page": "background.html"
+    },
+    "browser_action": 
+	{
+		"default_icon": "img/icon.png",
+		"default_title": "这是一个自动执行页面滚动的Chrome扩展",
+		"default_popup": "popup.html"
+    },
+    "content_scripts": 
+	[
+		{
+			"matches": ["<all_urls>"],
+			"js": ["js/jquery-3.4.1.js", "js/content-script.js"],
+			"css": ["css/custom.css"],
+			"run_at": "document_end"
+		}
+    ],
+    "permissions":
+	[
+		"contextMenus", 
+		"tabs", 
+		"notifications",
+		"webRequest", 
+		"webRequestBlocking",
+		"storage", 
+		"http://*/*", 
+		"https://*/*" 
+    ],
+    "web_accessible_resources": ["js/inject.js"],
+	"homepage_url": "https://www.baidu.com"
+}
